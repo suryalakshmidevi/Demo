@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Boxes</title>
+</head>
+<body>
+
+  <main>
+    <!-- Box at the Top -->
+    <section id="box1" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
+      <header>Top Box</header>
+      <div class="options" style="display:none;">
+        <label for="box1-color">Choose Color:</label>
+        <select id="box1-color">
+          <option value="">Select</option>
+          <option value="lightblue">Light Blue</option>
+          <option value="lightgreen">Light Green</option>
+          <option value="lightcoral">Light Coral</option>
+        </select>
+        <br><br>
+        <label for="box1-size">Choose Size:</label>
+        <select id="box1-size">
+          <option value="">Select</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Box in the Middle -->
+    <section id="box2" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
+      <header>Middle Box</header>
+      <div class="options" style="display:none;">
+        <label for="box2-color">Choose Color:</label>
+        <select id="box2-color">
+          <option value="">Select</option>
+          <option value="lightblue">Light Blue</option>
+          <option value="lightgreen">Light Green</option>
+          <option value="lightcoral">Light Coral</option>
+        </select>
+        <br><br>
+        <label for="box2-size">Choose Size:</label>
+        <select id="box2-size">
+          <option value="">Select</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Box at the Bottom -->
+    <section id="box3" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
+      <header>Bottom Box</header>
+      <div class="options" style="display:none;">
+        <label for="box3-color">Choose Color:</label>
+        <select id="box3-color">
+          <option value="">Select</option>
+          <option value="lightblue">Light Blue</option>
+          <option value="lightgreen">Light Green</option>
+          <option value="lightcoral">Light Coral</option>
+        </select>
+        <br><br>
+        <label for="box3-size">Choose Size:</label>
+        <select id="box3-size">
+          <option value="">Select</option>
+          <option value="small">Small</option>
+          <option value="medium">Medium</option>
+          <option value="large">Large</option>
+        </select>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Get all box sections
+    const boxes = document.querySelectorAll('section');
+
+    // Function to expand and collapse the boxes
+    function toggleBox(box) {
+      const optionsDiv = box.querySelector('.options');
+      // Toggle display between 'none' and 'block'
+      if (optionsDiv.style.display === 'block') {
+        optionsDiv.style.display = 'none';
+        box.style.height = '100px';
+      } else {
+        // Collapse other boxes
+        boxes.forEach(b => {
+          b.style.height = '100px';
+          b.querySelector('.options').style.display = 'none';
+        });
+        // Expand the clicked box
+        optionsDiv.style.display = 'block';
+        box.style.height = '200px';
+      }
+    }
+
+    // Add click and keyboard listeners to expand/collapse
+    boxes.forEach(box => {
+      box.addEventListener('click', () => toggleBox(box));
+      box.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          toggleBox(box);
+        }
+      });
+
+      const colorSelect = box.querySelector('select[id$="color"]');
+      const sizeSelect = box.querySelector('select[id$="size"]');
+
+      // Change color based on user selection
+      colorSelect.addEventListener('change', function() {
+        box.style.backgroundColor = this.value;
+      });
+
+      // Change size based on user selection
+      sizeSelect.addEventListener('change', function() {
+        switch (this.value) {
+          case 'small':
+            box.style.width = '150px';
+            box.style.height = '75px';
+            break;
+          case 'medium':
+            box.style.width = '200px';
+            box.style.height = '100px';
+            break;
+          case 'large':
+            box.style.width = '250px';
+            box.style.height = '125px';
+            break;
+          default:
+            box.style.width = '200px';
+            box.style.height = '100px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
