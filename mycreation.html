@@ -3,102 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Boxes</title>
+  <title>Interactive Boxes Task</title>
 </head>
 <body>
 
   <main>
-    <!-- Box at the Top -->
-    <section id="box1" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
-      <header>Top Box</header>
+   
+    <section id="box1" tabindex="0" style="width:500px;
+    height:100px;margin:20px;
+    background-color:rgb(173, 7, 7);
+    border:2px solid black;">
+      <header>Box Number A</header>
       <div class="options" style="display:none;">
-        <label for="box1-color">Choose Color:</label>
+        <label for="box1-color">Choose Any Color:</label>
         <select id="box1-color">
           <option value="">Select</option>
-          <option value="lightblue">Light Blue</option>
-          <option value="lightgreen">Light Green</option>
-          <option value="lightcoral">Light Coral</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="white">White</option>
         </select>
+
         <br><br>
         <label for="box1-size">Choose Size:</label>
         <select id="box1-size">
           <option value="">Select</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+          <option value="small">Small Size</option>
+          <option value="medium">Medium Size</option>
+          <option value="large">Large Size</option>
         </select>
       </div>
     </section>
 
-    <!-- Box in the Middle -->
-    <section id="box2" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
-      <header>Middle Box</header>
+    
+    <section id="box2" tabindex="0" style="width:500px;
+    height:100px;margin:20px;background-color:rgb(59, 13, 151);
+    border:2px solid black;">
+      <header>Box Number B</header>
       <div class="options" style="display:none;">
-        <label for="box2-color">Choose Color:</label>
+        <label for="box2-color">Choose Any Color:</label>
         <select id="box2-color">
           <option value="">Select</option>
-          <option value="lightblue">Light Blue</option>
-          <option value="lightgreen">Light Green</option>
-          <option value="lightcoral">Light Coral</option>
+          <option value="green">Green</option>
+          <option value="yellow">Yellow</option>
+          <option value="white">White</option>
         </select>
         <br><br>
-        <label for="box2-size">Choose Size:</label>
+        <label for="box2-size">Choose ANy Size:</label>
         <select id="box2-size">
           <option value="">Select</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+          <option value="small">Small Size</option>
+          <option value="medium">Medium Size</option>
+          <option value="large">Large Size</option>
         </select>
       </div>
     </section>
 
-    <!-- Box at the Bottom -->
-    <section id="box3" tabindex="0" style="width:200px;height:100px;margin:20px;background-color:lightblue;border:2px solid black;">
-      <header>Bottom Box</header>
+    
+    <section id="box3" tabindex="0" style="width:500px;height:100px;
+    margin:20px;background-color:rgb(10, 194, 96);
+    border:2px solid black;">
+      <header>Box Number C</header>
       <div class="options" style="display:none;">
-        <label for="box3-color">Choose Color:</label>
+        <label for="box3-color">Choose Any Color:</label>
         <select id="box3-color">
           <option value="">Select</option>
-          <option value="lightblue">Light Blue</option>
-          <option value="lightgreen">Light Green</option>
-          <option value="lightcoral">Light Coral</option>
+          <option value="white">White</option>
+          <option value="yellow">Yellow</option>
+          <option value="green">Green</option>
         </select>
         <br><br>
-        <label for="box3-size">Choose Size:</label>
+        <label for="box3-size">Choose Any Size:</label>
         <select id="box3-size">
           <option value="">Select</option>
-          <option value="small">Small</option>
-          <option value="medium">Medium</option>
-          <option value="large">Large</option>
+          <option value="small">Small Size</option>
+          <option value="medium">Medium Size</option>
+          <option value="large">Large Size</option>
         </select>
       </div>
     </section>
   </main>
 
   <script>
-    // Get all box sections
+    
     const boxes = document.querySelectorAll('section');
 
-    // Function to expand and collapse the boxes
+    
     function toggleBox(box) {
       const optionsDiv = box.querySelector('.options');
-      // Toggle display between 'none' and 'block'
-      if (optionsDiv.style.display === 'block') {
+      
+      if (optionsDiv.style.display === 'black') {
         optionsDiv.style.display = 'none';
         box.style.height = '100px';
       } else {
-        // Collapse other boxes
+       
         boxes.forEach(b => {
           b.style.height = '100px';
           b.querySelector('.options').style.display = 'none';
         });
-        // Expand the clicked box
+        
         optionsDiv.style.display = 'block';
         box.style.height = '200px';
       }
     }
 
-    // Add click and keyboard listeners to expand/collapse
+    
+    
+    
     boxes.forEach(box => {
       box.addEventListener('click', () => toggleBox(box));
       box.addEventListener('keydown', (e) => {
@@ -108,31 +118,33 @@
       });
 
       const colorSelect = box.querySelector('select[id$="color"]');
+
       const sizeSelect = box.querySelector('select[id$="size"]');
 
-      // Change color based on user selection
-      colorSelect.addEventListener('change', function() {
+      
+      colorSelect.addEventListener('change', function()
+       {
         box.style.backgroundColor = this.value;
-      });
+       });
 
-      // Change size based on user selection
+      
       sizeSelect.addEventListener('change', function() {
         switch (this.value) {
           case 'small':
-            box.style.width = '150px';
-            box.style.height = '75px';
+            box.style.width = '100px';
+            box.style.height = '100px';
             break;
           case 'medium':
             box.style.width = '200px';
-            box.style.height = '100px';
+            box.style.height = '200px';
             break;
           case 'large':
-            box.style.width = '250px';
-            box.style.height = '125px';
+            box.style.width = '300px';
+            box.style.height = '300px';
             break;
           default:
-            box.style.width = '200px';
-            box.style.height = '100px';
+            box.style.width = '250px';
+            box.style.height = '150px';
         }
       });
     });
